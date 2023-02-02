@@ -5,8 +5,8 @@
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="marb2c.onmicrosoft.com"
-  PolicyId="B2C_1A_ProfileEdit"
-  PublicPolicyUri="http://marb2c.onmicrosoft.com/B2C_1A_ProfileEdit">
+  PolicyId="B2C_1A_progressive_signup_signin"
+  PublicPolicyUri="http://marb2c.onmicrosoft.com/B2C_1A_progressice_signup_signin">
 
   <BasePolicy>
     <TenantId>marb2c.onmicrosoft.com</TenantId>
@@ -14,11 +14,19 @@
   </BasePolicy>
 
   <RelyingParty>
-    <DefaultUserJourney ReferenceId="ProfileEdit" />
+    <DefaultUserJourney ReferenceId="SignUpOrSignInProgressive" />
+    <Endpoints>
+      <!--points to refresh token journey when app makes refresh token request-->
+      <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
+    </Endpoints>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="OpenIdConnect" />
       <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
       </OutputClaims>
@@ -26,5 +34,4 @@
     </TechnicalProfile>
   </RelyingParty>
 </TrustFrameworkPolicy>
-
 

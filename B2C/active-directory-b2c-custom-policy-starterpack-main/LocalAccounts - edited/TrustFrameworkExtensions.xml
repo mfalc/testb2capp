@@ -10,7 +10,8 @@
   
   <BasePolicy>
     <TenantId>marb2c.onmicrosoft.com</TenantId>
-    <PolicyId>B2C_1A_TrustFrameworkLocalization</PolicyId>
+    <!--<PolicyId>B2C_1A_TrustFrameworkLocalization</PolicyId>-->
+    <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
   </BasePolicy>
 
   <BuildingBlocks>
@@ -24,12 +25,12 @@
       <TechnicalProfiles>
          <TechnicalProfile Id="login-NonInteractive">
           <Metadata>
-            <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-            <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
+            <Item Key="client_id">c94d8282-e8ed-4123-b65b-626ffe4c6737</Item>
+            <Item Key="IdTokenAudience">2c716228-20a6-4afe-9e52-ec8bc7d06257</Item>
           </Metadata>
           <InputClaims>
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppId" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppId" />
+            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="c94d8282-e8ed-4123-b65b-626ffe4c6737" />
+            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="2c716228-20a6-4afe-9e52-ec8bc7d06257" />
           </InputClaims>
         </TechnicalProfile>
       </TechnicalProfiles>
@@ -39,9 +40,8 @@
 
   <UserJourneys>
 
-    <UserJourney Id="SignUpOrSignIn">
+    <UserJourney Id="SignUpOrSignInProgressive">
         <OrchestrationSteps>
-
           <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
             <ClaimsProviderSelections>
               <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />

@@ -18,7 +18,7 @@
 
   <ClaimsProviders>
 
-    <ClaimsProvider>
+    <ClaimsProvider> <!-- Facebook -->
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Facebook-OAUTH">
@@ -31,7 +31,20 @@
       </TechnicalProfiles>
     </ClaimsProvider>
 
-    <ClaimsProvider>
+    <ClaimsProvider> <!-- GitHub -->
+      <DisplayName>GitHub</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="GitHub-OAuth2">
+          <Metadata>
+            <Item Key="client_id">f10c2b79941d4d630ef8</Item>
+            <Item Key="scope">read:user user:email</Item>
+            <Item Key="ClaimsEndpoint">https://api.github.com/user</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider> <!-- Local Account SignIn -->
       <DisplayName>Local Account SignIn</DisplayName>
       <TechnicalProfiles>
          <TechnicalProfile Id="login-NonInteractive">
@@ -51,7 +64,7 @@
 
   </ClaimsProviders>
 
-    <!--UserJourneys>
+  <!--UserJourneys>
 	
 	</UserJourneys-->
 
